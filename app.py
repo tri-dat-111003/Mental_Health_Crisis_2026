@@ -26,7 +26,7 @@ st.caption("Dataset: Global Mental Health Crisis Index 2026 (Kaggle)")
 def load_data():
     import os
     # Đường dẫn tương đối tính từ file app.py
-    data_file = os.path.join("data", "Global_Mental_Health_Crisis.csv")
+    data_file = os.path.join("data", "Global_Mental_Health_Crisis_Index_2026.csv")
     
     if not os.path.exists(data_file):
         st.error(f"Không tìm thấy file tại {data_file}")
