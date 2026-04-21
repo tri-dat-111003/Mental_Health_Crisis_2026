@@ -24,15 +24,21 @@ st.caption("Dataset: Global Mental Health Crisis Index 2026 (Kaggle)")
 # ── Load data ──────────────────────────────────────────────────────────────────
 @st.cache_data
 def load_data():
-    import kagglehub, os
-    path = kagglehub.dataset_download("alitaqishah/global-mental-health-crisis-index-2026")
-    csv_files = [f for f in os.listdir(path) if f.endswith(".csv")]
-    df = pd.read_csv(os.path.join(path, csv_files[0]))
+    import os
+    # Đường dẫn tương đối tính từ file app.py
+    data_file = os.path.join("data", "Global_Mental_Health_Crisis.csv")
+    
+    if not os.path.exists(data_file):
+        st.error(f"Không tìm thấy file tại {data_file}")
+        return None
+        
+    df = pd.read_csv(data_file)
 
-    # Encode categorical column
+    # Encode categorical column (Làm sạch dữ liệu ngay khi load)
     unique_labels = df["social_media_mental_health_risk"].unique()
     risk_mapping = {label: i for i, label in enumerate(unique_labels)}
     df["social_media_mh_risk_encoded"] = df["social_media_mental_health_risk"].map(risk_mapping)
+    
     return df
 
 with st.spinner("Đang tải dữ liệu..."):
