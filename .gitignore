@@ -205,3 +205,23 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Python bytecode (rác tạo ra khi chạy code)
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Môi trường ảo 
+venv/
+env/
+.env
+venv_mental_health/
+
+# Thư mục cache của Streamlit và Kaggle
+.streamlit/
+.cache/
+.ipynb_checkpoints/
+
+# File hệ thống
+.DS_Store
+Thumbs.db
